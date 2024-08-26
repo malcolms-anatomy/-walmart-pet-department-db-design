@@ -1,0 +1,77 @@
+@startuml  Diagram 2
+entity Product {
+    * product_id : INT
+    --
+    name : VARCHAR
+    type : ENUM
+    manufacturer_id : INT
+}
+
+entity PetFood {
+    * weight : FLOAT
+    * flavor : VARCHAR
+    * target_health_condition : VARCHAR
+}
+
+entity PetToy {
+    * material : VARCHAR
+    * durability : VARCHAR
+}
+
+entity PetApparel {
+    * color : VARCHAR
+    * size : VARCHAR
+    * care_instructions : TEXT
+}
+
+entity Animal {
+    * animal_id : INT
+    --
+    name : VARCHAR
+}
+
+entity Manufacturer {
+    * manufacturer_id : INT
+    --
+    name : VARCHAR
+}
+
+entity Customer {
+    * customer_id : INT
+    --
+    name : VARCHAR
+    email : VARCHAR
+}
+
+entity Transaction {
+    * transaction_id : INT
+    --
+    date : DATE
+    customer_id : INT
+}
+
+entity Location {
+    * location_id : INT
+    --
+    name : VARCHAR
+    zip_code : VARCHAR
+}
+
+entity Shipment {
+    * shipment_id : INT
+    --
+    origin : INT
+    destination : INT
+}
+
+Product }|--|{ Manufacturer
+PetFood --|> Product
+PetToy --|> Product
+PetApparel --|> Product
+Animal }|--|{ Product
+Transaction }|--|{ Product
+Transaction }--|{ Customer
+Shipment }|--|{ Location
+Shipment }|--|{ Product
+
+@enduml

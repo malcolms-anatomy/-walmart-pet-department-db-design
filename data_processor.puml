@@ -1,0 +1,23 @@
+@startuml  Diagram
+class Datapoint
+class ModeIdentifier
+class DatabaseIdentifier
+
+class Processor {
+    - mode: ModeIdentifier
+    - database: DatabaseIdentifier
+    + processData(datapoint: Datapoint): Datapoint
+    + saveToDatabase(datapoint: Datapoint): void
+}
+
+class DataCleaner {
+    + cleanData(datapoint: Datapoint): Datapoint
+}
+
+class DataTransformer {
+    + transformData(datapoint: Datapoint): Datapoint
+}
+
+Processor <|-- DataCleaner
+Processor <|-- DataTransformer
+@enduml
